@@ -36,7 +36,7 @@ unsigned char	parse_flags(const char *str)
 		if (c == '0' && !(flags & PADDING_END))
 			flags |= LEADING_ZEROS;
 		if (c == '#')
-			flags |= ALTERNATIVE;
+			flags |= ALTERNATIVE_FORM;
 	}
 	return (flags);
 }
