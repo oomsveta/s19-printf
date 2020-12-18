@@ -5,6 +5,7 @@
 
 a.out
 libft.a
+libftprintf.a
 test.c
 
 /.idea/
