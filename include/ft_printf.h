@@ -24,6 +24,19 @@
 # define PADDING_END		0x04
 # define LEADING_ZEROS		0x08
 # define ALTERNATIVE_FORM	0x10
+# define PADDING_AS_ARG		0x20
+# define PRECISION_AS_ARG	0x40
+
+/*
+** Struct to save parsed data
+*/
+
+typedef struct	s_format
+{
+	unsigned char	flags;
+	int				padding;
+	int				precision;
+}				t_format;
 
 int				ft_printf(const char *format, ...);
 int				pf_int_to_str(t_u8_vec *vec, unsigned int n);

@@ -27,23 +27,21 @@ static int pf_format(char c, va_list args, t_u8_vec *buffer)
 int	ft_printf(const char *format, ...)
 {
 	t_u8_vec	*buffer;
+	t_format	*parsed_data;
 	va_list		args;
 	int			ret;
 
 	if (!(buffer = u8_vec_new(0x200)))
 		return (-1);
 	va_start(args, format);
+	parsed_data = NULL;
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			if (ft_strchr("dsupixcX%", format[1]))
-			{
-				if (!pf_format(format[1], args, buffer)) {
-					return (-1); // TODO: free buffer
-				}
-				format += 2;
-			}
+			free(parsed_data);
+			if (!(parsed_data = pf_parse(parsed_data, format)))
+				return (-1); // TODO: free buffer
 		}
 		if (!u8_vec_push(buffer, *format++))
 			return (-1);
