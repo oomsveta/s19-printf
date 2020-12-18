@@ -21,6 +21,7 @@ static int pf_format(char c, va_list args, t_u8_vec *buffer)
 		return (u8_vec_push(buffer, (unsigned char)va_arg(args, int)));
 	if (c == 'd' || c == 'i')
 		return (pf_int_to_str(buffer, va_arg(args, int)));
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
