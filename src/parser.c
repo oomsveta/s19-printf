@@ -73,4 +73,5 @@ t_format	*pf_parse(t_format *parsed_data, const char *str)
 		return (NULL);
 	parse_flags(parsed_data, &str);
 	parse_flags2(parsed_data, &str);
+	return (parsed_data);
 }
