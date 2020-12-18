@@ -16,4 +16,5 @@ Each invocation of va_start() must be matched by a corresponding invocation of v
 |:---:|:---:|---|
 |%|✅|Prints a literal % character|
 |c|✅|Prints a char|
+|s|❌|Prints a null-terminated string|
 |m|❌|Prints the string corresponding to the error code in errno (from GNU extension)|
