@@ -41,7 +41,7 @@ static void	parse_flags(t_format *parsed_data, const char **str)
 	parsed_data->flags = flags;
 }
 
-static void	parse_flags2(t_format *parsed_data, const char **str)
+static void	parse_width_flags(t_format *parsed_data, const char **str)
 {
 	unsigned char c;
 
@@ -72,6 +72,6 @@ t_format	*pf_parse(t_format *parsed_data, const char *str)
 	if (!(parsed_data = malloc(sizeof(t_format))))
 		return (NULL);
 	parse_flags(parsed_data, &str);
-	parse_flags2(parsed_data, &str);
+	parse_width_flags(parsed_data, &str);
 	return (parsed_data);
 }
