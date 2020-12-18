@@ -31,7 +31,7 @@ unsigned char	parse_flags(const char *str)
 		if (c == '-')
 		{
 			flags |= PADDING_END;
-			flags &= ~LEADING_ZERO;
+			flags &= ~LEADING_ZEROS;
 		}
 		if (c == '0' && !(flags & PADDING_END))
 			flags |= LEADING_ZEROS;
