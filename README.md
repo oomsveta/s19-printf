@@ -87,7 +87,7 @@ In my implementation of printf, unsupported flags are just ignored.
 |`f`|🔧|Prints a decimal floating point (lowercase) ⁽¹⁾|`1.618033`|
 |`G`|🔧|Prints a decimal floating point using the shortest representation: %E or %F|`392.65`|
 |`g`|🔧|Prints a decimal floating point using the shortest representation: %e or %f|`392.65`|
-|`m`|❌|(from GNU extension) Prints the string corresponding to the error code in errno|`Succes`|
+|`m`|❌|(from GNU extension) Prints the string corresponding to the error code in errno|`Success`|
 |`n`|❌|Stores the number of characters written so far in a variable. The argument corresponding to this specifier must be a pointer to a `signed int`, which will be used to store the number.||
 |`o`|🔧|Prints an unsigned octal|`12345670`|
 |`p`|🔧|Prints a pointer address ⁽²⁾|`0x201`|
