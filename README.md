@@ -67,8 +67,8 @@ In my implementation of printf, unsupported flags are just ignored.
 |`a`|👷|Prints a hexadecimal floating point (lowercase)|`0x1.4d55554fbdad7p+9`|
 |`c`|👷|Prints a character|`c`|
 |`d` or `i`|👷|Prints a signed decimal integer|`512`|
-|`F`|👷|Prints a decimal floating point (uppercase) *¹|`3.142857`|
-|`f`|👷|Prints a decimal floating point (lowercase) *¹|`1.618033`|
+|`F`|👷|Prints a decimal floating point (uppercase) ⁽¹⁾|`3.142857`|
+|`f`|👷|Prints a decimal floating point (lowercase) ⁽¹⁾|`1.618033`|
 |`E`|👷|Prints a decimal floating point using the scientific notation (uppercase)|`3.9265E+2`|
 |`e`|👷|Prints a decimal floating point using the scientific notation (lowercase)|`3.9265e+2`|
 |`G`|👷|Prints a decimal floating point using the shortest representation: %E or %F|`392.65`|
@@ -77,7 +77,7 @@ In my implementation of printf, unsupported flags are just ignored.
 |`m`|❌|(from GNU extension) Prints the string corresponding to the error code in errno|`Succes`|
 |`n`|❌|Stores the number of characters written so far in a variable. The argument corresponding to this specifier must to be a pointer to a `signed int`, which will be used to store the number.||
 |`o`|👷|Prints an unsigned octal|`12345670`|
-|`p`|👷|Prints a pointer address *²|`0x201`|
+|`p`|👷|Prints a pointer address ⁽²⁾|`0x201`|
 |`u`|👷|Prints an unsigned decimal integer|`4294967295`|
 |`X`|👷|Prints an unsigned hexadecimal integer (uppercase)|`AAAAAAA`|
 |`x`|👷|Prints an unsigned hexadecimal integer (lowercase)|`aaaaaaa`|
