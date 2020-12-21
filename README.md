@@ -2,6 +2,14 @@
 
 WIP
 
+***Printf*** is my third project as a student of the 19 Coding School.
+
+As you've probably guessed, the purpose of this project is to reimplement the `printf` function from scratch. The only way we have so far to print values is to use the `write` syscall to put a sequence of octets into STDOUT. Hence, printing anything else than simple characters becomes really tedious and more sophisticated function such as `printf` goes without saying.
+
+
+
+The project guidelines are available [here](/subjects/en.subject.pdf); note that this repository may be NOT fully-compliant with the requirements, mainly for organizational purposes. Students, be aware, if you steal my code, you'll face the consequences 😈
+
 ## Why is your coding-style so weird? 🤮
 
 I strictly follow the *Norm* enforced by the school. The Norm is a laundry list of coding conventions that students have to follow to the letter on pain of seeing their work sanctioned with a 0. The Norm forbids for instance the use of `goto`, `do while` and `for` loops, requires to declare every variable at the top of a function, and restrains the number of lines, columns and routines. Such restrictions are sometimes leading to the use of obscure code golf tricks 😅
@@ -28,6 +36,9 @@ The various flags can occur in any order within this part of the format specifie
 In implementations such as GCC, the same flag can be repeated several times.
 
 Since the flags don't have to be in a certain order, going through the string while the current character is a valid flag and record it somewhere as a boolean property seems to be an easy way to parse every flag and handle the repetitions at the same time.
+
++ **Mandatory flags for this project**: `-`, `0`
++ **Bonus flags**: `#`, ` `, `+`
 
 |Flags|Supported|Description|
 |:---:|:---:|---|
@@ -60,31 +71,44 @@ In my implementation of printf, unsupported flags are just ignored.
 
 #### Specifiers
 
++ **Mandatory specifiers for this project**: cspdiuxX%
++ **Bonus specifiers**: nfge
+
 |Specifier|Supported|Description|Example|
 |:---:|:---:|---|---|
-|`%`|👷‍|Prints a literal % character|`%`|
-|`A`|👷|Prints a hexadecimal floating point (uppercase)|`0X1.4D55554FBDAD7P+9`|
-|`a`|👷|Prints a hexadecimal floating point (lowercase)|`0x1.4d55554fbdad7p+9`|
-|`c`|👷|Prints a character|`c`|
-|`d` or `i`|👷|Prints a signed decimal integer|`512`|
-|`E`|👷|Prints a decimal floating point using the scientific notation (uppercase)|`3.9265E+2`|
-|`e`|👷|Prints a decimal floating point using the scientific notation (lowercase)|`3.9265e+2`|
-|`F`|👷|Prints a decimal floating point (uppercase) ⁽¹⁾|`3.142857`|
-|`f`|👷|Prints a decimal floating point (lowercase) ⁽¹⁾|`1.618033`|
-|`G`|👷|Prints a decimal floating point using the shortest representation: %E or %F|`392.65`|
-|`g`|👷|Prints a decimal floating point using the shortest representation: %e or %f|`392.65`|
+|`%`|🔧‍|Prints a literal % character|`%`|
+|`A`|🔧|Prints a hexadecimal floating point (uppercase)|`0X1.4D55554FBDAD7P+9`|
+|`a`|🔧|Prints a hexadecimal floating point (lowercase)|`0x1.4d55554fbdad7p+9`|
+|`c`|🔧|Prints a character|`c`|
+|`d` or `i`|🔧|Prints a signed decimal integer|`512`|
+|`E`|🔧|Prints a decimal floating point using the scientific notation (uppercase)|`3.9265E+2`|
+|`e`|🔧|Prints a decimal floating point using the scientific notation (lowercase)|`3.9265e+2`|
+|`F`|🔧|Prints a decimal floating point (uppercase) ⁽¹⁾|`3.142857`|
+|`f`|🔧|Prints a decimal floating point (lowercase) ⁽¹⁾|`1.618033`|
+|`G`|🔧|Prints a decimal floating point using the shortest representation: %E or %F|`392.65`|
+|`g`|🔧|Prints a decimal floating point using the shortest representation: %e or %f|`392.65`|
 |`m`|❌|(from GNU extension) Prints the string corresponding to the error code in errno|`Succes`|
 |`n`|❌|Stores the number of characters written so far in a variable. The argument corresponding to this specifier must be a pointer to a `signed int`, which will be used to store the number.||
-|`o`|👷|Prints an unsigned octal|`12345670`|
-|`p`|👷|Prints a pointer address ⁽²⁾|`0x201`|
-|`s`|👷|Prints a null-terminated string|`shrek`|
-|`u`|👷|Prints an unsigned decimal integer|`4294967295`|
-|`X`|👷|Prints an unsigned hexadecimal integer (uppercase)|`AAAAAAA`|
-|`x`|👷|Prints an unsigned hexadecimal integer (lowercase)|`aaaaaaa`|
+|`o`|🔧|Prints an unsigned octal|`12345670`|
+|`p`|🔧|Prints a pointer address ⁽²⁾|`0x201`|
+|`s`|🔧|Prints a null-terminated string|`shrek is love`|
+|`u`|🔧|Prints an unsigned decimal integer|`4294967295`|
+|`X`|🔧|Prints an unsigned hexadecimal integer (uppercase)|`AAAAAAA`|
+|`x`|🔧|Prints an unsigned hexadecimal integer (lowercase)|`aaaaaaa`|
 
 ##### Notes
 1. The `F` and `f` specifiers only differ with special values such as INFINITY and NAN.
 2. Formatting NULL with the `p` specifier produces `(nil)`.
+
+### Buffer
+
+pas demandé pour ce projet
+
+réduire le nombre de syscalls et donc être plus rapide
+
+adapter le code pour asprintf et autres
+
+j'utilise des vecteurs pour limiter les allocations de mémoire et facilement récupérer la longueur
 
 ## References
 
