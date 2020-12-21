@@ -31,11 +31,15 @@ Since the flags don't have to be in a certain order, going through the string wh
 
 |Flags|Supported|Description|
 |:---:|:---:|---|
-|-|✅|Right-pads the value to fit the given field width. Without this flag, the padding is set to the left by default.|
-|+|✅|Add the '+' sign in front of a positive number.|
-|space|✅|If no sign is going to be written, a blank space is inserted before the value. This can be helpful to align positive and negative numbers without putting a plus sign in front of positive numbers. Used in combination with the `+` flag, this flag is ignored.|
-|0|✅|Left-pads the number with zeroes instead of spaces when width is specified. Used in combination with the `-` flag, this flag is ignored.|
-|#|✅|Used with `o`, `x` or `X` specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero. Used with `a`, `A`, `e`, `E`, `f`, `F`, `g` or `G` it forces the written output to contain a decimal point even if no more digits follow. By default, if no digits follow, no decimal point is written.|
+|`-`|✅|Right-pads the value to fit the given field width. Without this flag, the padding is set to the left by default.|
+|`+`|✅|Adds the '+' sign in front of a positive number.|
+|` `|✅|If no sign is going to be written, a blank space is inserted before the value. This can be helpful to align positive and negative numbers without putting a plus sign in front of positive numbers. Used in combination with the `+` flag, this flag is ignored.|
+|`0`|✅|Left-pads the number with zeroes instead of spaces when width is specified. Used in combination with the `-` flag, this flag is ignored.|
+|`#`|✅|Used with `o`, `x` or `X` specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero. Used with `a`, `A`, `e`, `E`, `f`, `F`, `g` or `G` it forces the written output to contain a decimal point even if no more digits follow. By default, if no digits follow, no decimal point is written.|
+|`I`|❌|(from GNU extension) ???|
+|`'`|❌|(from POSIX extension) Groups thousands by separating them with a character defined by the locale.|
+
+In my implementation of printf, unsupported flags are just ignored.
 
 #### Width
 
