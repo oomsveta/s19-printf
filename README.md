@@ -14,10 +14,6 @@ The project guidelines are available [here](/subjects/en.subject.pdf); note that
 
 I strictly follow the *Norm* enforced by the school. The Norm is a laundry list of coding conventions that students have to follow to the letter on pain of seeing their work sanctioned with a 0. The Norm forbids for instance the use of `goto`, `do while` and `for` loops, requires to declare every variable at the top of a function, and restrains the number of lines, columns and routines. Such restrictions are sometimes leading to the use of obscure code golf tricks 😅
 
-## Notes
-
-Each invocation of va_start() must be matched by a corresponding invocation of va_end() in the same function.
-
 ## About the printf specification
 
 ### Format specifiers
@@ -57,7 +53,7 @@ The width is the minimal number of characters to be printed. If the value to be 
 
 You can set the width either literally by specifying it within the format string or by using arguments of the printf function. To set the width using arguments, you have to put the `*` character in the format string, which means the width will be provided as an argument of type `int`.
 
-You cannot use both fashions at the same time, and you cannot repeat the `*` modifier.
+You cannot use both ways at the same time, and you cannot repeat the `*` modifier.
 
 If you provide a negative width using the arguments, then its absolute value will be used and the result will be right-padded, in the same way as if you've enabled the `-` flag.
 
@@ -116,6 +112,8 @@ réduire le nombre de syscalls et donc être plus rapide
 adapter le code pour asprintf et autres
 
 j'utilise des vecteurs pour limiter les allocations de mémoire et facilement récupérer la longueur
+
+Each invocation of va_start() must be matched by a corresponding invocation of va_end() in the same function.
 
 ## References
 
