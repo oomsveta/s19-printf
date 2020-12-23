@@ -15,6 +15,8 @@
 
 #include "libft.h"
 
+# define DEFAULT_PRECISION	6
+
 /*
 ** Flag constants for the parser
 ** |PA|P|WA|W|#|0|-|+|Sp|
@@ -44,7 +46,7 @@ typedef struct	s_format
 int				ft_printf(const char *format, ...);
 int				pf_int_to_str(t_u8_vec *vec, unsigned int n);
 void	pf_parse_flags(t_format *parsed_data, const char **str);
-void	pf_parse_width(t_format *parsed_data, const char **str);
+int 	pf_parse_width(t_format *parsed_data, const char **str);
 t_format	*pf_parse(t_format *parsed_data, const char *str);
 
 #endif

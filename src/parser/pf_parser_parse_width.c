@@ -14,18 +14,22 @@
 #include "ft_printf.h"
 #include <stdio.h> // TODO: remove
 
-void	pf_parse_width(t_format *parsed_data, const char **str)
+int	pf_parse_width(t_format *parsed_data, const char **str)
 {
 	int width;
+	int limit;
 
 	if (ft_isdigit(**str))
 	{
 		width = 0;
 		parsed_data->flags |= DEFINED_WIDTH;
+		limit = INT_MAX / 10;
 		while (ft_isdigit(**str))
-			width = width * 10 + *(*str)++ - '0';
+			if (width > limit || (width = width * 10 + *(*str)++ - '0') < 0)
+				return (0);
 		parsed_data->width = width;
 	}
 	else if (**str == '*')
 		parsed_data->flags |= WIDTH_AS_ARGS | DEFINED_WIDTH;
+	return (1);
 }

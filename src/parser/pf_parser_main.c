@@ -19,5 +19,10 @@ t_format	*pf_parse(t_format *parsed_data, const char *str)
 	if (!(parsed_data = malloc(sizeof(t_format))))
 		return (NULL);
 	pf_parse_flags(parsed_data, &str);
+	if (!pf_parse_width(parsed_data, &str))
+	{
+		free(parsed_data);
+		return (NULL);
+	}
 	return (parsed_data);
 }
