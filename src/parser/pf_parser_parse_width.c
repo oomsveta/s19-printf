@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h> // TODO: remove
 
 int	pf_parse_width(t_format *parsed_data, const char **str)
 {
