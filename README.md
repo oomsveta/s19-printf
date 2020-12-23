@@ -4,8 +4,9 @@ WIP
 
 ***Printf*** is my third project as a student of the 19 Coding School.
 
-As you've probably guessed, the purpose of this project is to reimplement the `printf` function from scratch. The only way we have so far to print values is to use the `write` syscall to put a sequence of octets into STDOUT. Hence, printing anything else than simple characters becomes really tedious and more sophisticated function such as `printf` goes without saying.
+As you've probably guessed, the purpose of this project is to reimplement the `printf` function from scratch. The only way we have so far to print values is to use the `write` syscall to put a sequence of octets into STDOUT. Hence, printing anything else than simple characters becomes really tedious and more sophisticated functions such as `printf` are necessary.
 
+The aim of reimplementing printf is to get used to variadic functions, data parsing and various base conversions.
 
 
 The project guidelines are available [here](/subjects/en.subject.pdf); note that this repository may be NOT fully-compliant with the requirements, mainly for organizational purposes. Students, be aware, if you steal my code, you'll face the consequences 😈
