@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRC  = src/ft_printf.c src/parser/pf_parser_main.c src/parser/pf_parser_parse_flags.c
+SRC  = src/ft_printf.c src/parser/pf_parser_main.c src/parser/pf_parser_parse_flags.c src/parser/pf_parser_parse_width.c
 OBJ  = ${SRC:c=o}
 
 CC = gcc
@@ -16,6 +16,7 @@ $(NAME): ${OBJ}
 
 clean:
 	rm -f src/*/*.o
+	rm -f src/*.o
 
 fclean: clean
 	rm -f ${NAME}
