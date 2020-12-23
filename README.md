@@ -9,7 +9,7 @@ As you've probably guessed, the purpose of this project is to reimplement the `p
 The aim of reimplementing printf is to get used to variadic functions, data parsing and various base conversions.
 
 
-The project guidelines are available [here](/subjects/en.subject.pdf); note that this repository may be NOT fully-compliant with the requirements, mainly for organizational purposes. Students, be aware, if you steal my code, you'll face the consequences 😈
+The project guidelines are available [here](/subjects/en.subject.pdf); note that this repository may NOT be fully-compliant with the requirements, mainly for organizational purposes. Students, be aware, if you steal my code, you'll face the consequences 😈
 
 ## Why is your coding-style so weird? 🤮
 
