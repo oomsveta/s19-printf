@@ -6,7 +6,7 @@ WIP
 
 As you've probably guessed, the purpose of this project is to reimplement the `printf` function from scratch. The only way we have so far to print values is to use the `write` syscall to put a sequence of octets into STDOUT. Hence, printing anything else than simple characters becomes really tedious and more sophisticated functions such as `printf` are necessary.
 
-The aim of reimplementing printf is to get used to variadic functions, data parsing and various base conversions.
+The aim of reimplementing printf is to get used to variadic functions, string parsing and various base conversions.
 
 
 The project guidelines are available [here](/subjects/en.subject.pdf); note that this repository may NOT be fully-compliant with the requirements, mainly for organizational purposes. Students, be aware, if you steal my code, you'll face the consequences 😈
@@ -47,13 +47,21 @@ Since the flags don't have to be in a certain order, going through the string wh
 |`+`|✅|Adds the plus sign in front of a positive number.|
 |` `|✅|If no sign is going to be written, a space is inserted before the value. This can be helpful to align positive and negative numbers without putting a plus sign in front of positive numbers. Used in combination with the `+` flag, this flag is ignored.|
 |`0`|✅|Left-pads the number with zeroes instead of spaces when width is specified. Used in combination with the `-` flag, this flag is ignored.|
-|`#`|✅|Used with `o`, `x` or `X` specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero. Used with `a`, `A`, `e`, `E`, `f`, `F`, `g` or `G` it forces the written output to contain a decimal point even if no more digits follow. By default, if no digits follow, no decimal point is written.|
+|`#`|✅|Used with `o`, `x` or `X` specifiers the value is preceded with 0, 0x or 0X respectively for values different than zero. Used with `a`, `A`, `e`, `E`, `f`, `F`, `g` or `G` it forces the written output to contain a decimal point even if no more digits follow. By default, if no digits follow, no decimal point is written.|
 |`I`|❌|(from GNU extension) ???|
 |`'`|❌|(from POSIX extension) Groups thousands by separating them with a character defined by the locale.|
 
 In my implementation of printf, unsupported flags are just ignored.
 
 #### Width
+
+The width is the minimal number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with spaces (or zeroes if the `0` flag is used). The value is not truncated even if the result is larger.
+
+You can set the width either literally by specifying it within the format string or by using arguments of the printf function. To provide the width using arguments, you have to put the `*` character in the format string, which means the width will be provided as an argument of type `int`.
+
+You cannot use both fashions at the same time, and you cannot repeat the `*` modifier.
+
+If you provide a negative width using the arguments, then its absolute value will be used and the result will be right-padded, in the same way as if you've enabled the `-` flag.
 
 #### Precision
 
