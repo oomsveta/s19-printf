@@ -55,6 +55,8 @@ You can set the width either literally by specifying it within the format string
 
 You cannot use both ways at the same time, and you cannot repeat the `*` modifier.
 
+The max width varies from one implementation to another, but always has to be lower than the INT_MAX. On the 19 School's computers (Mac OS X 10.14.6), the limit is 2,147,483,646. Exceeding the limit leads to printing nothing on any implementation I've tested.
+
 If you provide a negative width using the arguments, then its absolute value will be used and the result will be right-padded, in the same way as if you've enabled the `-` flag.
 
 #### Precision
