@@ -12,7 +12,7 @@
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h>
+#include <stdio.h> // TODO: remove
 
 int	ft_printf(const char *format, ...)
 {

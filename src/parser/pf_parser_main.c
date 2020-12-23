@@ -19,6 +19,5 @@ t_format	*pf_parse(t_format *parsed_data, const char *str)
 	if (!(parsed_data = malloc(sizeof(t_format))))
 		return (NULL);
 	pf_parse_flags(parsed_data, &str);
-	printf("\nflags: %u", parsed_data->flags);
 	return (parsed_data);
 }

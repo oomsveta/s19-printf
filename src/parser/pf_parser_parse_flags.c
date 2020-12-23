@@ -12,7 +12,7 @@
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h>
+#include <stdio.h> // TODO: remove
 
 void	pf_parse_flags(t_format *parsed_data, const char **str)
 {
@@ -22,7 +22,6 @@ void	pf_parse_flags(t_format *parsed_data, const char **str)
 	flags = 0x00;
 	while (ft_strchr("# -+0I'", (c = *(*str)++)))
 	{
-		puts("lol");
 		if (c == ' ' && !(flags & LEADING_PLUS))
 			flags |= LEADING_SPACE;
 		else if (c == '+')
