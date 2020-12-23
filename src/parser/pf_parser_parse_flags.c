@@ -16,8 +16,8 @@
 
 void	pf_parse_flags(t_format *parsed_data, const char **str)
 {
-	unsigned char c;
-	unsigned char flags;
+	unsigned char		c;
+	unsigned short int	flags;
 
 	flags = 0x00;
 	while (ft_strchr("# -+0I'", (c = *(*str)++)))
