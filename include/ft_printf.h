@@ -17,6 +17,7 @@
 
 /*
 ** Flag constants for the parser
+** |#|0|-|+|S|
 */
 
 # define LEADING_SPACE		0x01
@@ -25,7 +26,8 @@
 # define LEADING_ZEROS		0x08
 # define ALTERNATIVE_FORM	0x10
 # define PADDING_AS_ARG		0x20
-# define PRECISION_AS_ARG	0x40
+# define DEFINED_PRECISION	0x40
+# define PRECISION_AS_ARG	0x80
 
 /*
 ** Struct to save parsed data
@@ -40,6 +42,7 @@ typedef struct	s_format
 
 int				ft_printf(const char *format, ...);
 int				pf_int_to_str(t_u8_vec *vec, unsigned int n);
-unsigned char	parse_flags(const char *str);
+void	pf_parse_flags(t_format *parsed_data, const char **str);
+t_format	*pf_parse(t_format *parsed_data, const char *str);
 
 #endif

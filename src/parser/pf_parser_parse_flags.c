@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   pf_parser_parse_flags.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwicket <lwicket@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,30 +14,31 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_printf(const char *format, ...)
+void	pf_parse_flags(t_format *parsed_data, const char **str)
 {
-	t_u8_vec	*buffer;
-	t_format	*parsed_data;
-	va_list		args;
-	int			ret;
+	unsigned char c;
+	unsigned char flags;
 
-	if (!(buffer = u8_vec_new(0x200)))
-		return (-1);
-	va_start(args, format);
-	parsed_data = NULL;
-	while (*format)
+	flags = 0x00;
+	while (ft_strchr("# -+0I'", (c = *(*str)++)))
 	{
-		if (*format == '%')
+		puts("lol");
+		if (c == ' ' && !(flags & LEADING_PLUS))
+			flags |= LEADING_SPACE;
+		else if (c == '+')
 		{
-			free(parsed_data);
-			if (!(parsed_data = pf_parse(parsed_data, format + 1)))
-				return (-1); // TODO: free buffer
+			flags &= ~LEADING_SPACE;
+			flags |= LEADING_PLUS;
 		}
-		if (!u8_vec_push(buffer, *format++))
-			return (-1);
+		else if (c == '-')
+		{
+			flags |= PADDING_END;
+			flags &= ~LEADING_ZEROS;
+		}
+		else if (c == '0' && !(flags & PADDING_END))
+			flags |= LEADING_ZEROS;
+		else if (c == '#')
+			flags |= ALTERNATIVE_FORM;
 	}
-	va_end(args);
-	ret = write(STDOUT, buffer->content, buffer->length);
-	// TODO: free buffer
-	return (ret);
+	parsed_data->flags = flags;
 }

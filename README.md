@@ -8,7 +8,6 @@ As you've probably guessed, the purpose of this project is to reimplement the `p
 
 The aim of reimplementing printf is to get used to variadic functions, string parsing and various base conversions.
 
-
 The project guidelines are available [here](/subjects/en.subject.pdf); note that this repository may NOT be fully-compliant with the requirements, mainly for organizational purposes. Students, be aware, if you steal my code, you'll face the consequences 😈
 
 ## Why is your coding-style so weird? 🤮
@@ -26,7 +25,6 @@ Each invocation of va_start() must be matched by a corresponding invocation of v
 A format specifier always follows this syntax: `%[flags][width][.precision][length]specifier`.
 Optional parts are in square brackets: that means only the specifier is mandatory.
 If the syntax is inaccurate, the format specifier must be printed as is, without any formatting.
-
 
 #### Flags
 
@@ -57,7 +55,7 @@ In my implementation of printf, unsupported flags are just ignored.
 
 The width is the minimal number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with spaces (or zeroes if the `0` flag is used). The value is not truncated even if the result is larger.
 
-You can set the width either literally by specifying it within the format string or by using arguments of the printf function. To provide the width using arguments, you have to put the `*` character in the format string, which means the width will be provided as an argument of type `int`.
+You can set the width either literally by specifying it within the format string or by using arguments of the printf function. To set the width using arguments, you have to put the `*` character in the format string, which means the width will be provided as an argument of type `int`.
 
 You cannot use both fashions at the same time, and you cannot repeat the `*` modifier.
 

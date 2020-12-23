@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-SRC  = ${wildcard src/*.c} ${wildcard src/*/*.c}
+SRC  = src/ft_printf.c src/parser/pf_parser_main.c src/parser/pf_parser_parse_flags.c
 OBJ  = ${SRC:c=o}
 
 CC = gcc
