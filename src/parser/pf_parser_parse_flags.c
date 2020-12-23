@@ -16,8 +16,8 @@
 
 void	pf_parse_flags(t_format *parsed_data, const char **str)
 {
-	unsigned char		c;
 	unsigned short int	flags;
+	unsigned char		c;
 
 	flags = 0x00;
 	while (ft_strchr("# -+0I'", (c = *(*str)++)))
@@ -32,10 +32,10 @@ void	pf_parse_flags(t_format *parsed_data, const char **str)
 		else if (c == '-')
 		{
 			flags |= PADDING_END;
-			flags &= ~LEADING_ZEROS;
+			flags &= ~PAD_WITH_ZEROS;
 		}
 		else if (c == '0' && !(flags & PADDING_END))
-			flags |= LEADING_ZEROS;
+			flags |= PAD_WITH_ZEROS;
 		else if (c == '#')
 			flags |= ALTERNATIVE_FORM;
 	}
