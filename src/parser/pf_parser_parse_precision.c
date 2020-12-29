@@ -23,7 +23,7 @@ int	pf_parse_precision(t_format *format, const char **str)
 	format->flags |= DEFINED_PRECISION;
 	prec = 0;
 	if (*++(*str) == '*')
-		flags |= PRECISION_AS_ARG;
+		format->flags |= PRECISION_AS_ARG;
 	else
 	{
 		limit = INT_MAX / 10;
