@@ -16,15 +16,15 @@ I strictly follow the *Norm* enforced by the school. The Norm is a laundry list 
 
 ## About the printf specification
 
-### Format specifiers
+### Format specification
 
-A format specifier always follows this syntax: `%[flags][width][.precision][length]specifier`.
-Optional parts are in square brackets: that means only the specifier is mandatory.
-If the syntax is inaccurate, the format specifier must be printed as is, without any formatting.
+A format specifier always follows this syntax: `%[flags][width][.precision][size]type`.
+Optional fields are in square brackets: that means only the type field is mandatory.
+If the syntax is inaccurate, the specifier must be printed as is, without any formatting.
 
 #### Flags
 
-Flags are the first part of the format specifier.
+Flags are the first part of a format specifier.
 They are optional, but each of them has to appear before the other parts if it is used.
 
 The various flags can occur in any order within this part of the format specifier.
@@ -61,7 +61,9 @@ If you provide a negative width using the arguments, then its absolute value wil
 
 #### Precision
 
-#### Length
+A precision specification always starts with `.` to separate it from the width field
+
+#### Size
 
 |Modifier|Supported|Description|
 |:---:|:---:|---|
@@ -74,7 +76,7 @@ If you provide a negative width using the arguments, then its absolute value wil
 |`z`|?|???|
 |`q`|?|???|
 
-#### Specifiers
+#### Type
 
 + **Mandatory specifiers for this project**: cspdiuxX%
 + **Bonus specifiers**: nfge

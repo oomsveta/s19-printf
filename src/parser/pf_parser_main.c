@@ -14,15 +14,15 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-t_format	*pf_parse(t_format *parsed_data, const char *str)
+t_format	*pf_parse(t_format *data, const char *str)
 {
 	if (!(parsed_data = malloc(sizeof(t_format))))
 		return (NULL);
-	pf_parse_flags(parsed_data, &str);
-	if (!pf_parse_width(parsed_data, &str))
+	pf_parse_flags(data, &str);
+	if (!(pf_parse_width(data, &str) && pf_parse_precision(data, &str)))
 	{
-		free(parsed_data);
+		free(data);
 		return (NULL);
 	}
-	return (parsed_data);
+	return (data);
 }
