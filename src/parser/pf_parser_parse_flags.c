@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-void	pf_parse_flags(t_format *parsed_data, const char **str)
+void	pf_parse_flags(t_format *format, const char **str)
 {
 	unsigned short int	flags;
 	unsigned char		c;
@@ -38,5 +38,5 @@ void	pf_parse_flags(t_format *parsed_data, const char **str)
 		else if (c == '#')
 			flags |= ALTERNATIVE_FORM;
 	}
-	parsed_data->flags = flags;
+	format->flags = flags;
 }

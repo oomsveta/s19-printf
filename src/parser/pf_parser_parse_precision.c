@@ -13,14 +13,14 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int	pf_parse_precision(t_format *parsed_data, const char **str)
+int	pf_parse_precision(t_format *format, const char **str)
 {
 	int prec;
 	int limit;
 
 	if (**str != '.')
 		return (1);
-	parsed_data->flags |= DEFINED_PRECISION;
+	format->flags |= DEFINED_PRECISION;
 	prec = 0;
 	if (*++(*str) == '*')
 		flags |= PRECISION_AS_ARG;
@@ -31,6 +31,6 @@ int	pf_parse_precision(t_format *parsed_data, const char **str)
 			if (prec > limit || (prec = prec * 10 + *(*str)++ - '0') < 0)
 				return (0);
 	}
-	parsed_data->precision = prec;
+	format->precision = prec;
 	return (1);
 }
