@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h> // TODO: remove
 
 void	pf_parse_flags(t_format *parsed_data, const char **str)
 {
