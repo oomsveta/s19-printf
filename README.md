@@ -63,18 +63,22 @@ If you provide a negative width using the arguments, then its absolute value wil
 
 A precision specification always starts with `.` to separate it from the width field
 
+WIP 
+
 #### Size
 
 |Modifier|Supported|Description|
 |:---:|:---:|---|
-|`hh`|?|???|
-|`h`|?|???|
-|`l`|?|???|
-|`ll`|?|???|
+|`hh`|🔧|???|
+|`h`|🔧|???|
+|`l`|🔧|???|
+|`ll`|🔧|???|
 |`j`|?|???|
 |`t`|?|???|
 |`z`|?|???|
 |`q`|?|???|
+
+et les trucs de microsoft
 
 #### Type
 

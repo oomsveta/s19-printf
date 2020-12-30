@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   pf_parser_parse_size.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwicket <lwicket@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,34 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h> // TODO: remove
 
-int	ft_printf(const char *str, ...)
+void	pf_parse_size(t_format *format, const char **str)
 {
-	t_u8_vec	*buffer;
-	t_format	*format;
-	va_list		args;
-	int			ret;
-
-	if (!(buffer = u8_vec_new(0x200)))
-		return (0);
-	va_start(args, str);
-	format = NULL;
-	while (*str)
+	if (**str == 'h')
 	{
-		if (*str == '%')
+		if (*++(*str) == 'h')
 		{
-			free(format);
-			if (!(format = pf_parse(format, str)))
-				return (0); // TODO: free buffer
+			format->size = HH;
+			(*str)++;
 		}
-		if (!u8_vec_push(buffer, *str++))
-			return (0);
+		else
+			format->size = H;
 	}
-	va_end(args);
-	ret = write(STDOUT, buffer->content, buffer->length);
-	// TODO: free buffer
-	return (ret);
+	else if (**str == 'l')
+	{
+		if (*++(*str) == 'l')
+		{
+			format->size = LL;
+			(*str)++;
+		}
+		else
+			format->size = L;
+	}
+	else
+		format->size = 0;
 }

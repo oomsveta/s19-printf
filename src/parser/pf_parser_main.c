@@ -24,5 +24,6 @@ t_format	*pf_parse(t_format *format, const char *str)
 		free(format);
 		return (NULL);
 	}
+	pf_parse_size(format, &str);
 	return (format);
 }

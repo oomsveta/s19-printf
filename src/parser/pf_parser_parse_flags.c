@@ -19,7 +19,7 @@ void	pf_parse_flags(t_format *format, const char **str)
 	unsigned char		c;
 
 	flags = 0x00;
-	while (ft_strchr("# -+0I'", (c = *(*str)++)))
+	while (ft_strchr("# -+0I'", (c = *++(*str))))
 	{
 		if (c == ' ' && !(flags & LEADING_PLUS))
 			flags |= LEADING_SPACE;
