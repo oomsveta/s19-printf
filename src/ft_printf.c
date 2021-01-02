@@ -14,6 +14,14 @@
 #include "ft_printf.h"
 #include <stdio.h> // TODO: remove
 
+int free_all(t_format *format, t_u8_vec *buffer)
+{
+	free(format);
+	free(buffer->content);
+	free(buffer);
+	return (0);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	t_u8_vec	*buffer;
@@ -29,15 +37,14 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			free(format);
 			if (!(format = pf_parse(format, str)))
-				return (0); // TODO: free buffer
+				return (free_all(format, buffer));
 		}
 		if (!u8_vec_push(buffer, *str++))
 			return (0);
 	}
 	va_end(args);
 	ret = write(STDOUT, buffer->content, buffer->length);
-	// TODO: free buffer
+	free_all(format, buffer);
 	return (ret);
 }

@@ -16,6 +16,7 @@
 
 t_format	*pf_parse(t_format *format, const char *str)
 {
+	free(format);
 	if (!(format = malloc(sizeof(t_format))))
 		return (NULL);
 	pf_parse_flags(format, &str);
