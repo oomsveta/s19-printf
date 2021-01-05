@@ -14,17 +14,25 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-t_format	*pf_parse(t_format *format, const char *str)
+int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 {
-	free(format);
-	if (!(format = malloc(sizeof(t_format))))
-		return (NULL);
+	const char	*str;
+	t_format	*format;
+
+	str = *pstr;
+	if (!(*pfrmt = malloc(sizeof(t_format))))
+		return (0);
+	format = *pfrmt;
 	pf_parse_flags(format, &str);
 	if (!(pf_parse_width(format, &str) && pf_parse_precision(format, &str)))
-	{
-		free(format);
-		return (NULL);
-	}
+		return (0);
 	pf_parse_size(format, &str);
-	return (format);
+	if (ft_strchr("cspdiuxX%", *str))
+	{
+		format->type = *str;
+		*pstr = ++str;
+		if (!pf_format(pfrmt, buf, args))
+			return (0);
+	}
+	return (1);
 }

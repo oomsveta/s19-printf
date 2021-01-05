@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include "libft.h"
+# include "libft.h"
 
 /*
 ** Flag constants for the parser
@@ -34,26 +34,30 @@
 ** Size constants
 */
 
-enum size { H = 1, HH, L, LL };
+enum	e_size { H = 1, HH, L, LL };
 
 /*
 ** Struct to save parsed data
 */
 
-typedef struct	s_format
+struct	s_format
 {
 	unsigned short int	flags;
 	int					width;
 	int					precision;
 	unsigned char		size;
-}				t_format;
+	char				type;
+};
 
-int				ft_printf(const char *format, ...);
-int				pf_int_to_str(t_u8_vec *vec, unsigned int n);
+typedef struct s_format	t_format;
+
+int		ft_printf(const char *format, ...);
+int		pf_int_to_str(t_u8_vec *vec, unsigned int n);
 void	pf_parse_flags(t_format *parsed_data, const char **str);
-int 	pf_parse_width(t_format *parsed_data, const char **str);
+int		pf_parse_width(t_format *parsed_data, const char **str);
 int		pf_parse_precision(t_format *parsed_data, const char **str);
 void	pf_parse_size(t_format *format, const char **str);
-t_format	*pf_parse(t_format *parsed_data, const char *str);
+int		pf_parse(t_format **pf, const char **ps, t_u8_vec *b, va_list v);
+int		pf_format(t_format **pformat, t_u8_vec *buffer, va_list args);
 
 #endif
