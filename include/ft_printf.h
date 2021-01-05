@@ -58,6 +58,6 @@ int		pf_parse_width(t_format *parsed_data, const char **str);
 int		pf_parse_precision(t_format *parsed_data, const char **str);
 void	pf_parse_size(t_format *format, const char **str);
 int		pf_parse(t_format **pf, const char **ps, t_u8_vec *b, va_list v);
-int		pf_format(t_format **pformat, t_u8_vec *buffer, va_list args);
+int		pf_format(t_format *format, t_u8_vec *buffer, va_list args);
 
 #endif

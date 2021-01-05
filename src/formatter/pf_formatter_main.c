@@ -13,14 +13,10 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int	pf_format(t_format **pformat, t_u8_vec *buffer, va_list args)
+int	pf_format(t_format *format, t_u8_vec *buffer, va_list args)
 {
-	t_format *format;
-
-	format = *pformat;
 	(void)buffer;
 	(void)args;
-	free(format);
-	*pformat = NULL;
+	(void)format;
 	return (1);
 }

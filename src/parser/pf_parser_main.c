@@ -19,9 +19,10 @@ int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 	const char	*str;
 	t_format	*format;
 
-	str = *pstr;
+	free(*pfrmt);
 	if (!(*pfrmt = malloc(sizeof(t_format))))
 		return (0);
+	str = *pstr;
 	format = *pfrmt;
 	pf_parse_flags(format, &str);
 	if (!(pf_parse_width(format, &str) && pf_parse_precision(format, &str)))
@@ -31,7 +32,7 @@ int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 	{
 		format->type = *str;
 		*pstr = ++str;
-		if (!pf_format(pfrmt, buf, args))
+		if (!pf_format(format, buf, args))
 			return (0);
 	}
 	return (1);

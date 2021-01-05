@@ -33,6 +33,7 @@ int			ft_printf(const char *str, ...)
 	if (!(buffer = u8_vec_new(0x200)))
 		return (0);
 	va_start(args, str);
+	format = NULL;
 	while (*str)
 	{
 		if (*str == '%')
