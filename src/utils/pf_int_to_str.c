@@ -14,8 +14,8 @@
 
 int	pf_int_to_str(t_u8_vec *vec, unsigned int n)
 {
-	char buffer[10];
-	int i;
+	char	buffer[10];
+	int		i;
 
 	i = 0;
 	if (n >> 31)
