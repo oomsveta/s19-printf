@@ -29,6 +29,9 @@ int	pf_parse_width(t_format *format, const char **str)
 		format->width = width;
 	}
 	else if (**str == '*')
+	{
+		(*str)++;
 		format->flags |= WIDTH_AS_ARG | DEFINED_WIDTH;
+	}
 	return (1);
 }
