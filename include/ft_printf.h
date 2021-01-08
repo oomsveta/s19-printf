@@ -48,16 +48,47 @@ struct	s_format
 	unsigned char		size;
 	char				type;
 };
-
 typedef struct s_format	t_format;
 
+/*
+** "Dictionary" to map every type specifier to its handling function
+*/
+
+struct	s_pf_handler
+{
+	char	type;
+	int		(*handler)(t_format *, t_u8_vec *, va_list);
+};
+typedef struct s_pf_handler	t_pf_handler;
+
+/*
+** Main functions
+*/
+
 int		ft_printf(const char *format, ...);
-int		pf_int_to_str(t_u8_vec *vec, unsigned int n);
+int		pf_parse(t_format **pf, const char **ps, t_u8_vec *b, va_list v);
+int		pf_format(t_format *format, t_u8_vec *buffer, va_list args);
+
+/*
+** Parsing functions
+*/
+
 void	pf_parse_flags(t_format *parsed_data, const char **str);
 int		pf_parse_width(t_format *parsed_data, const char **str);
 int		pf_parse_precision(t_format *parsed_data, const char **str);
 void	pf_parse_size(t_format *format, const char **str);
-int		pf_parse(t_format **pf, const char **ps, t_u8_vec *b, va_list v);
-int		pf_format(t_format *format, t_u8_vec *buffer, va_list args);
+
+/*
+** Formatting functions
+*/
+
+int		pf_format_char(t_format *format, t_u8_vec *buffer, va_list args);
+int		pf_int_to_str(t_u8_vec *vec, unsigned int n);
+
+/*
+** Utils
+*/
+
+int		pf_get_width(t_format *format, va_list args, int default_width);
 
 #endif
