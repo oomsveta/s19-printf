@@ -35,5 +35,7 @@ int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 		if (!pf_format(format, buf, args))
 			return (0);
 	}
+	else
+		format->type = '\0';
 	return (1);
 }
