@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_formatter_main.c                                :+:      :+:    :+:   */
+/*   pf_formatter_format_char.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwicket <lwicket@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,35 +13,31 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-/*
-** Use a struct to emulate a dictionary which maps every type specifier to its
-** handling function.
-**
-** Mandatory types: cspdiuxX% ; bonuses: nfge
-*/
-
-t_pf_handler g_handlers[] =
+int	pf_format_char(t_format *format, t_u8_vec *buffer, va_list args)
 {
-	{	'c', &pf_format_char		},
-	{	'\0', NULL					}
-};
+	int	width;
 
-int	pf_format(t_format *format, t_u8_vec *buffer, va_list args)
-{
-	char	type;
-	int		i;
-
-	type = format->type;
-	i = 0;
-	while (g_handlers[i].type)
+	if (format->flags & DEFINED_WIDTH)
 	{
-		if (g_handlers[i].type == type)
+		width = pf_get_width(format, args, 1);
+		if (format->flags & PADDING_END)
 		{
-			if (!g_handlers[i].handler(format, buffer, args))
+			if (!u8_vec_push(buffer, va_arg(args, int)))
 				return (0);
-			break ;
+			while (width-- > 1)
+				if (!u8_vec_push(buffer, ' '))
+					return (0);
 		}
-		i++;
+		else
+		{
+			while (width-- > 1)
+				if (!u8_vec_push(buffer, ' '))
+					return (0);
+			if (!u8_vec_push(buffer, va_arg(args, int)))
+				return (0);
+		}
 	}
+	else
+		return (u8_vec_push(buffer, va_arg(args, int)));
 	return (1);
 }
