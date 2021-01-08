@@ -40,10 +40,11 @@ int			ft_printf(const char *str, ...)
 		{
 			if (!pf_parse(&format, &str, buffer, args))
 				return (free_all(format, buffer, args));
-			if (!*str)
-				break ;
+			if (!format->type)
+				if (!u8_vec_push(buffer, *str++))
+					return (free_all(format, buffer, args));
 		}
-		if (!u8_vec_push(buffer, *str++))
+		else if (!u8_vec_push(buffer, *str++))
 			return (free_all(format, buffer, args));
 	}
 	ret = write(STDOUT, buffer->content, buffer->length);
