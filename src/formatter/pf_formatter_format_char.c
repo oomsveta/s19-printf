@@ -19,7 +19,7 @@ int	pf_format_char(t_format *format, t_u8_vec *buffer, va_list args)
 
 	if (format->flags & DEFINED_WIDTH)
 	{
-		width = pf_get_width(format, args, 1);
+		width = format->width;
 		if (format->flags & PADDING_END)
 		{
 			if (!u8_vec_push(buffer, va_arg(args, int)))

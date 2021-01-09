@@ -13,15 +13,15 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int	pf_parse_width(t_format *format, const char **str)
+int	pf_parse_width(t_format *format, const char **str, va_list args)
 {
 	int width;
 	int limit;
 
 	if (ft_isdigit(**str))
 	{
-		width = 0;
 		format->flags |= DEFINED_WIDTH;
+		width = 0;
 		limit = INT_MAX / 10;
 		while (ft_isdigit(**str))
 			if (width > limit || (width = width * 10 + *(*str)++ - '0') < 0)
@@ -30,8 +30,13 @@ int	pf_parse_width(t_format *format, const char **str)
 	}
 	else if (**str == '*')
 	{
-		(*str)++;
 		format->flags |= WIDTH_AS_ARG | DEFINED_WIDTH;
+		if ((format->width = va_arg(args, int)) < 0)
+		{
+			format->flags |= PADDING_END;
+			format->width = -format->width;
+		}
+		(*str)++;
 	}
 	return (1);
 }

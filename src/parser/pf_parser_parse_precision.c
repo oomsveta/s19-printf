@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int	pf_parse_precision(t_format *format, const char **str)
+int	pf_parse_precision(t_format *format, const char **str, va_list args)
 {
 	int prec;
 	int limit;
@@ -21,16 +21,21 @@ int	pf_parse_precision(t_format *format, const char **str)
 	if (**str != '.')
 		return (1);
 	format->flags |= DEFINED_PRECISION;
-	prec = 0;
 	if (*++(*str) == '*')
+	{
 		format->flags |= PRECISION_AS_ARG;
+		if ((format->precision = va_arg(args, int)) < 0)
+			format->flags &= ~DEFINED_PRECISION;
+		(*str)++;
+	}
 	else
 	{
 		limit = INT_MAX / 10;
+		prec = 0;
 		while (ft_isdigit(**str))
 			if (prec > limit || (prec = prec * 10 + *(*str)++ - '0') < 0)
 				return (0);
+		format->precision = prec;
 	}
-	format->precision = prec;
 	return (1);
 }

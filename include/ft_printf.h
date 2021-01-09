@@ -74,8 +74,8 @@ int		pf_format(t_format *format, t_u8_vec *buffer, va_list args);
 */
 
 void	pf_parse_flags(t_format *parsed_data, const char **str);
-int		pf_parse_width(t_format *parsed_data, const char **str);
-int		pf_parse_precision(t_format *parsed_data, const char **str);
+int		pf_parse_width(t_format *format, const char **str, va_list args);
+int		pf_parse_precision(t_format *parsed_data, const char **str, va_list args);
 void	pf_parse_size(t_format *format, const char **str);
 
 /*
@@ -90,5 +90,7 @@ int		pf_int_to_str(t_u8_vec *vec, unsigned int n);
 */
 
 int		pf_get_width(t_format *format, va_list args, int default_width);
+int		pf_print_as_it(t_format *format, t_u8_vec *buffer);
+int		pf_push_int(t_u8_vec *vec, unsigned int n);
 
 #endif

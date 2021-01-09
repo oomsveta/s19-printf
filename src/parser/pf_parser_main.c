@@ -25,17 +25,17 @@ int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 	str = *pstr;
 	format = *pfrmt;
 	pf_parse_flags(format, &str);
-	if (!(pf_parse_width(format, &str) && pf_parse_precision(format, &str)))
+	if (!(pf_parse_width(format, &str, args)
+		&& pf_parse_precision(format, &str, args)))
 		return (0);
 	pf_parse_size(format, &str);
-	if (ft_strchr("cspdiuxX%", *str))
+	if (ft_strchr("cspdiuxX%", (format->type = *str)))
 	{
-		format->type = *str;
-		*pstr = ++str;
 		if (!pf_format(format, buf, args))
 			return (0);
-	}
-	else
-		format->type = '\0';
+	} // TODO: wtf pq ça marche pas !!!
+	else if (!pf_print_as_it(format, buf))
+			return (0);
+	*pstr = ++str;
 	return (1);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_int_to_str.c                                    :+:      :+:    :+:   */
+/*   pf_utils_push_int.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwicket <lwicket@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	pf_int_to_str(t_u8_vec *vec, unsigned int n)
+int	pf_push_int(t_u8_vec *vec, unsigned int n)
 {
 	char	buffer[10];
 	int		i;
