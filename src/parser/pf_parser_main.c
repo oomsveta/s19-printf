@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 {
