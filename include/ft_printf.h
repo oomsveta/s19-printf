@@ -18,6 +18,7 @@
 /*
 ** Flag constants for the parser
 ** |PA|P|WA|W|#|0|-|+|Sp|
+** TODO: No need for _AS_ARG flags anymore? -> maybe remove them
 */
 
 # define LEADING_SPACE		0x01
@@ -84,6 +85,7 @@ void	pf_parse_size(t_format *format, const char **str);
 
 int		pf_format_char(t_format *format, t_u8_vec *buffer, va_list args);
 int		pf_format_percent(t_format *format, t_u8_vec *buffer, va_list args);
+int		pf_format_str(t_format *format, t_u8_vec *buffer, va_list args);
 
 /*
 ** Utils

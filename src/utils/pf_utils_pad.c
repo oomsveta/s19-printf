@@ -14,7 +14,7 @@
 
 int	pf_pad(t_u8_vec *vec, int width, char c)
 {
-	while (width-- > 1)
+	while (--width > 0)
 		if (!u8_vec_push(vec, c))
 			return (0);
 	return (1);

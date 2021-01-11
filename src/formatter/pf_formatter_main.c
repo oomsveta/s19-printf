@@ -22,8 +22,9 @@
 
 t_pf_handler g_handlers[] =
 {
-	{	'c', &pf_format_char		},
 	{	'%', &pf_format_percent		},
+	{	'c', &pf_format_char		},
+	{	's', &pf_format_str			},
 	{	'\0', NULL					}
 };
 
