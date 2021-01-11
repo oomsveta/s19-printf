@@ -13,6 +13,12 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 
+/*
+** The percentage type formatting isn't affected by any flag. The 'format' and
+** 'args' arguments are provided to be consistent with the other formatting
+** functions.
+*/
+
 int	pf_format_percent(t_format *format, t_u8_vec *buffer, va_list args)
 {
 	(void)format;
