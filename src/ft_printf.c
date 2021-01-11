@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdio.h> // TODO: remove
 
 static int	free_all(t_format *format, t_u8_vec *buffer, va_list args)
 {

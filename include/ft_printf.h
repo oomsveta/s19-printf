@@ -90,6 +90,7 @@ int		pf_int_to_str(t_u8_vec *vec, unsigned int n);
 */
 
 int		pf_get_width(t_format *format, va_list args, int default_width);
+int		pf_pad(t_u8_vec *vec, int width, char c);
 int		pf_print_as_it(t_format *format, t_u8_vec *buffer);
 int		pf_push_int(t_u8_vec *vec, unsigned int n);
 

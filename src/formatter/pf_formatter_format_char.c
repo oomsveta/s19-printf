@@ -15,29 +15,10 @@
 
 int	pf_format_char(t_format *format, t_u8_vec *buffer, va_list args)
 {
-	int	width;
-
-	if (format->flags & DEFINED_WIDTH)
-	{
-		width = format->width;
-		if (format->flags & PADDING_END)
-		{
-			if (!u8_vec_push(buffer, va_arg(args, int)))
-				return (0);
-			while (width-- > 1)
-				if (!u8_vec_push(buffer, ' '))
-					return (0);
-		}
-		else
-		{
-			while (width-- > 1)
-				if (!u8_vec_push(buffer, ' '))
-					return (0);
-			if (!u8_vec_push(buffer, va_arg(args, int)))
-				return (0);
-		}
-	}
-	else
-		return (u8_vec_push(buffer, va_arg(args, int)));
+	if ((format->flags & DEFINED_WIDTH && !pf_pad(buffer, format->width, ' '))
+		|| !u8_vec_push(buffer, va_arg(args, int))
+		|| (format->flags & (DEFINED_WIDTH | PADDING_END)
+		&& !pf_pad(buffer, format->width, ' ')))
+		return (0);
 	return (1);
 }

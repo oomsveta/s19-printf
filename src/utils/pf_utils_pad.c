@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_parser_main.c                                   :+:      :+:    :+:   */
+/*   pf_utils_pad.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lwicket <lwicket@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,31 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
-#include <stdio.h>
 
-int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
+int	pf_pad(t_u8_vec *vec, int width, char c)
 {
-	const char	*str;
-	t_format	*format;
-
-	free(*pfrmt);
-	if (!(*pfrmt = malloc(sizeof(t_format))))
-		return (0);
-	str = *pstr;
-	format = *pfrmt;
-	pf_parse_flags(format, &str);
-	if (!(pf_parse_width(format, &str, args)
-		&& pf_parse_precision(format, &str, args)))
-		return (0);
-	pf_parse_size(format, &str);
-	if (ft_strchr("cspdiuxX%", (format->type = *str)))
-	{
-		if (!pf_format(format, buf, args))
+	while (width-- > 1)
+		if (!u8_vec_push(vec, c))
 			return (0);
-	}
-	else if (!pf_print_as_it(format, buf))
-		return (0);
-	*pstr = ++str;
 	return (1);
 }
