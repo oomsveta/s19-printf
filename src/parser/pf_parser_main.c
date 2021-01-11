@@ -16,26 +16,23 @@
 
 int	pf_parse(t_format **pfrmt, const char **pstr, t_u8_vec *buf, va_list args)
 {
-	const char	*str;
 	t_format	*format;
 
 	free(*pfrmt);
 	if (!(*pfrmt = malloc(sizeof(t_format))))
 		return (0);
-	str = *pstr;
 	format = *pfrmt;
-	pf_parse_flags(format, &str);
-	if (!(pf_parse_width(format, &str, args)
-		&& pf_parse_precision(format, &str, args)))
+	pf_parse_flags(format, pstr);
+	if (!(pf_parse_width(format, pstr, args)
+		&& pf_parse_precision(format, pstr, args)))
 		return (0);
-	pf_parse_size(format, &str);
-	if (ft_strchr("cspdiuxX%", (format->type = *str)))
+	pf_parse_size(format, pstr);
+	if (ft_strchr("cspdiuxX%", (format->type = *(*pstr)++)))
 	{
 		if (!pf_format(format, buf, args))
 			return (0);
 	}
 	else if (!pf_print_as_it(format, buf))
 		return (0);
-	*pstr = ++str;
 	return (1);
 }
