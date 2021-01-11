@@ -83,7 +83,7 @@ void	pf_parse_size(t_format *format, const char **str);
 */
 
 int		pf_format_char(t_format *format, t_u8_vec *buffer, va_list args);
-int		pf_int_to_str(t_u8_vec *vec, unsigned int n);
+int		pf_format_percent(t_format *format, t_u8_vec *buffer, va_list args);
 
 /*
 ** Utils

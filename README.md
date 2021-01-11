@@ -87,7 +87,7 @@ et les trucs de microsoft
 
 |Specifier|Supported|Description|Example|
 |:---:|:---:|---|---|
-|`%`|🔧‍|Prints a literal % character|`%`|
+|`%`|✅‍|Prints a literal % character|`%`|
 |`A`|🔧|Prints a hexadecimal floating point (uppercase)|`0X1.4D55554FBDAD7P+9`|
 |`a`|🔧|Prints a hexadecimal floating point (lowercase)|`0x1.4d55554fbdad7p+9`|
 |`c`|✅|Prints a character|`c`|
