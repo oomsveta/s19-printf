@@ -90,7 +90,7 @@ et les trucs de microsoft
 |`%`|🔧‍|Prints a literal % character|`%`|
 |`A`|🔧|Prints a hexadecimal floating point (uppercase)|`0X1.4D55554FBDAD7P+9`|
 |`a`|🔧|Prints a hexadecimal floating point (lowercase)|`0x1.4d55554fbdad7p+9`|
-|`c`|🔧|Prints a character|`c`|
+|`c`|✅|Prints a character|`c`|
 |`d` or `i`|🔧|Prints a signed decimal integer|`512`|
 |`E`|🔧|Prints a decimal floating point using the scientific notation (uppercase)|`3.9265E+2`|
 |`e`|🔧|Prints a decimal floating point using the scientific notation (lowercase)|`3.9265e+2`|
