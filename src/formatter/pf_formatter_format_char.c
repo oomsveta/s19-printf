@@ -13,6 +13,10 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+/*
+** char formatting is affected by '-' flag and width
+*/
+
 int	pf_format_char(t_format *format, t_u8_vec *buffer, va_list args)
 {
 	if ((format->flags & DEFINED_WIDTH && !pf_pad(buffer, format->width, ' '))
