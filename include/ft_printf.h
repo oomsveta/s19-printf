@@ -17,8 +17,7 @@
 
 /*
 ** Flag constants for the parser
-** |PA|P|WA|W|#|0|-|+|Sp|
-** TODO: No need for _AS_ARG flags anymore? -> maybe remove them
+** |P|W|#|0|-|+|Sp|
 */
 
 # define LEADING_SPACE		0x01
@@ -28,6 +27,12 @@
 # define ALTERNATIVE_FORM	0x10
 # define DEFINED_WIDTH		0x20
 # define DEFINED_PRECISION	0x40
+
+/*
+** (DEFINED_WIDTH | PADDING_END) would be better, but the Norm forbids it
+*/
+
+# define WIDTH_OR_PAD_END	0x24
 
 /*
 ** Size constants
@@ -72,9 +77,9 @@ int		pf_format(t_format *format, t_u8_vec *buffer, va_list args);
 ** Parsing functions
 */
 
-void	pf_parse_flags(t_format *parsed_data, const char **str);
+void	pf_parse_flags(t_format *format, const char **str);
 int		pf_parse_width(t_format *format, const char **str, va_list args);
-int		pf_parse_precision(t_format *parsed_data, const char **str, va_list args);
+int		pf_parse_precision(t_format *format, const char **str, va_list args);
 void	pf_parse_size(t_format *format, const char **str);
 
 /*

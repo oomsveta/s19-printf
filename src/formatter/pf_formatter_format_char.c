@@ -17,15 +17,13 @@
 ** char formatting is affected by '-' flag and width
 */
 
-// TODO: Shorten flags check
 // TODO: Handle size modifier (l)
 int	pf_format_char(t_format *format, t_u8_vec *buffer, va_list args)
 {
-	if ((format->flags & DEFINED_WIDTH
-		&& !(format->flags & PADDING_END)
+	if (((format->flags & WIDTH_OR_PAD_END) == DEFINED_WIDTH
 		&& !pf_pad(buffer, format->width, ' '))
 		|| !u8_vec_push(buffer, va_arg(args, int))
-		|| (format->flags & DEFINED_WIDTH && format->flags & PADDING_END
+		|| ((format->flags & WIDTH_OR_PAD_END) == WIDTH_OR_PAD_END
 		&& !pf_pad(buffer, format->width, ' ')))
 		return (0);
 	return (1);

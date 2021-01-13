@@ -32,7 +32,7 @@ int	pf_parse_precision(t_format *format, const char **str, va_list args)
 		limit = INT_MAX / 10;
 		prec = 0;
 		while (ft_isdigit(**str))
-			if (prec > limit || (prec = prec * 10 + (*(*str)++ & 0xf)) < 0)
+			if (prec > limit || (prec = prec * 10 + (*(*str)++ ^ '0')) < 0)
 				return (0);
 		format->precision = prec;
 	}
