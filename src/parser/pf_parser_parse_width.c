@@ -24,7 +24,7 @@ int	pf_parse_width(t_format *format, const char **str, va_list args)
 		width = 0;
 		limit = INT_MAX / 10;
 		while (ft_isdigit(**str))
-			if (width > limit || (width = width * 10 + *(*str)++ - '0') < 0)
+			if (width > limit || (width = width * 10 + (*(*str)++ & 0xf)) < 0)
 				return (0);
 		format->width = width;
 	}
