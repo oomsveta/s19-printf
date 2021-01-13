@@ -20,7 +20,7 @@
 
 static int	push_flags(t_format *format, t_u8_vec *buffer)
 {
-	unsigned short int flags;
+	unsigned char	flags;
 
 	flags = format->flags;
 	if ((flags & ALTERNATIVE_FORM && !u8_vec_push(buffer, '#'))

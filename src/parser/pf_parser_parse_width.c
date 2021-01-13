@@ -30,7 +30,7 @@ int	pf_parse_width(t_format *format, const char **str, va_list args)
 	}
 	else if (**str == '*')
 	{
-		format->flags |= WIDTH_AS_ARG | DEFINED_WIDTH;
+		format->flags |= DEFINED_WIDTH;
 		if ((format->width = va_arg(args, int)) < 0)
 		{
 			format->flags |= PADDING_END;

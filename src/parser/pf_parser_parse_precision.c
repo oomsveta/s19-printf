@@ -23,7 +23,6 @@ int	pf_parse_precision(t_format *format, const char **str, va_list args)
 	format->flags |= DEFINED_PRECISION;
 	if (*++(*str) == '*')
 	{
-		format->flags |= PRECISION_AS_ARG;
 		if ((format->precision = va_arg(args, int)) < 0)
 			format->flags &= ~DEFINED_PRECISION;
 		(*str)++;

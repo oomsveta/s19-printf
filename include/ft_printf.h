@@ -27,9 +27,7 @@
 # define PAD_WITH_ZEROS		0x08
 # define ALTERNATIVE_FORM	0x10
 # define DEFINED_WIDTH		0x20
-# define WIDTH_AS_ARG		0x40
-# define DEFINED_PRECISION	0x80
-# define PRECISION_AS_ARG	0x100
+# define DEFINED_PRECISION	0x40
 
 /*
 ** Size constants
@@ -43,11 +41,11 @@ enum	e_size { H = 1, HH, L, LL };
 
 struct	s_format
 {
-	unsigned short int	flags;
-	int					width;
-	int					precision;
-	unsigned char		size;
-	char				type;
+	unsigned char	flags;
+	int				width;
+	int				precision;
+	unsigned char	size;
+	char			type;
 };
 typedef struct s_format	t_format;
 
@@ -91,7 +89,6 @@ int		pf_format_str(t_format *format, t_u8_vec *buffer, va_list args);
 ** Utils
 */
 
-int		pf_get_width(t_format *format, va_list args, int default_width); // TODO: useless? -> remove
 int		pf_pad(t_u8_vec *vec, int width, char c);
 int		pf_print_as_it(t_format *format, t_u8_vec *buffer);
 int		pf_push_int(t_u8_vec *vec, unsigned int n);

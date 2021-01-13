@@ -51,6 +51,7 @@ int				ft_toupper(int c);
 **	EXTRA
 */
 
+size_t			utf32_to_utf8(unsigned char *const buf, const unsigned int wchar);
 char			*repeat(const char *str, int count);
 const char		*skip_whitespaces(const char **ptr);
 char			*trim(const char *s);

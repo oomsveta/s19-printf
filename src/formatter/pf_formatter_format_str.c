@@ -37,7 +37,7 @@ int	pf_format_str(t_format *format, t_u8_vec *buffer, va_list args)
 		if (!u8_vec_push(buffer, str[i++]))
 			return (0);
 	if (format->flags & DEFINED_WIDTH && format->flags & PADDING_END
-		 && !pf_pad(buffer, format->width - length + 1, ' '))
+		&& !pf_pad(buffer, format->width - length + 1, ' '))
 		return (0);
 	return (1);
 }
