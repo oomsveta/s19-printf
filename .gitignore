@@ -8,5 +8,9 @@ libft.a
 libftprintf.a
 test.c
 
+CMakeLists.txt
+/cmake-build-debug/
+/cmake-build-wsl/
+
 /.idea/
 /.vscode/
