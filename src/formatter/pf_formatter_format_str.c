@@ -53,6 +53,7 @@ static int	push_wstr(t_u8_vec *vec, const wchar_t *wstr, size_t size)
 
 /*
 ** string formatting is affected by '-' flag, width and precision
+** If the l size specifier is set, the string must be handled as a wchar string
 ** Awful!!! TODO: Refactor 😾
 */
 
