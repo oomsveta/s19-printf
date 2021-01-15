@@ -40,7 +40,7 @@ static int	push_wstr(t_u8_vec *vec, const wchar_t *wstr, size_t size)
 	size_t			i;
 	unsigned char	buffer[4];
 
-	while (--size)
+	while (size-- > 1)
 	{
 		amount_of_bytes = utf32_to_utf8(buffer, *wstr++);
 		i = 0;
